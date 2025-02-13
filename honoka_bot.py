@@ -30,5 +30,9 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def faitodayo(ctx):
     await ctx.send("Faito dayo!! \nhttps://tenor.com/view/honoka-kosaka-love-live-dance-gif-22348813")
 
+
+@bot.command(name="whoisstupid")
+async def whoisstupid(ctx):
+    await ctx.send("Hmmmmm I think Raphael Chase Osorio from Pardo Cebu City near 7/11!! \n https://tenor.com/view/honoka-anime-gif-5514844")
 # Run the bot
 bot.run(TOKEN)
