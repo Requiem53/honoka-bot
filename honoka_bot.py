@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+SERVER_DIR = os.getenv("MC_SERVER_DIR")
 # Define bot
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -23,8 +24,17 @@ async def start_server(ctx):
         return
 
     # Start server using tmux
-    subprocess.run(["tmux", "new-session", "-d", "-s", "minecraft", "java -Xms2G -Xmx4G -jar server.jar nogui"])
-    await ctx.send("Minecraft server started!! Let's play!! https://tenor.com/view/lets-goo-honoka-kousaka-gif-23293886")
+    result = subprocess.run(
+    ["tmux", "-L", "global", "new-session", "-d", "-s", "minecraft", "bash", "-c", f"cd {SERVER_DIR} && java -Xms2G -Xmx4G -jar server.jar nogui"],
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE,
+    text=True
+)
+
+    if result.stderr:
+        await ctx.send(f"HONK!! Error detected 🔥📯\n```{result.stderr}```")
+    else:
+        await ctx.send("Minecraft server started successfully! Let's goooo~ 📯🎺 (huwat mga 10 seconds pls)")
 
 @bot.command(name="fd")
 async def faitodayo(ctx):
