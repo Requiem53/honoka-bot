@@ -32,9 +32,9 @@ async def start_server(ctx):
 )
 
     if result.stderr:
-        await ctx.send(f"HONK!! Error detected 🔥📯\n```{result.stderr}```")
+        await ctx.send(f"HONK!! Error detected 🔥📯\n```{result.stderr}```\nhttps://tenor.com/view/dies-of-sleep-deprivation-honoka-kosaka-gif-26685230")
     else:
-        await ctx.send("Minecraft server started successfully! Let's goooo~ 📯🎺 (huwat mga 10 seconds pls)")
+        await ctx.send("Minecraft server started successfully! Let's goooo~ 📯🎺 (huwat mga 10 seconds pls)\n https://tenor.com/view/lets-goo-honoka-kousaka-gif-23293886")
 
 @bot.command(name="fd")
 async def faitodayo(ctx):
